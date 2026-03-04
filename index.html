@@ -1,0 +1,272 @@
+  <!DOCTYPE html>
+  <html lang="pt-BR">
+  <head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lab do Design - By Marcella</title>
+  <link rel="icon" href="../PortifólioDesigner/IMAGENS/logo (2).png" sizes="900x900" type="image/png">
+
+  <!-- React / ReactDOM / Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:#fafafa;
+    color:#333;
+  }
+
+  /* ======== NAVBAR ======== */
+  header{
+    padding: 1rem;
+    background: transparent;
+  }
+  .gradient-text {
+    background: linear-gradient(90deg, #ec4899 0%, #be185d 50%, #000000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .modern-navbar{
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(165deg, #ec4899 0%, #be185d 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+  .nav-menu {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+  }
+  .nav-item {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s;
+  }
+  .nav-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+  }
+
+  /* ======== SEÇÕES ======== */
+  section{padding:4rem 1rem;max-width:1100px;margin:auto;}
+  h2.section-title{text-align:center;margin-bottom:2rem;font-size:2rem;}
+
+  /* ======== GRADE DE PROJETOS ======== */
+  .projetos-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:2rem;
+    align-items:stretch;
+  }
+
+  .card{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+    transition:.2s;
+  }
+  .card:hover{transform:translateY(-6px);}
+  .card img{
+    width: 100%;
+    height: clamp(160px, 22vw, 280px);
+    object-fit: contain;
+    background-color: #f9f9f9; /* opcional: cor do fundo */
+    padding: 10px; /* opcional: dá respiro à imagem */
+    transition:transform 0.4s ease;
+  }
+  .card:hover img{transform:scale(1.03);}
+  .card-content{padding:1rem;}
+
+  /* ======== SOBRE ======== */
+  .skills span{
+    display:inline-block;
+    background:#eee;
+    padding:.4rem .8rem;
+    border-radius:20px;
+    margin:.3rem;
+    font-size:.9rem;
+    transition:background-color 0.3s ease;
+  }
+  .skills span:hover{background:#be185d;color:#fff;}
+
+  /* ======== CONTATO ======== */
+  .contact-links i {
+    margin-right: 6px;
+    font-size: 1.2rem;
+    color: #b303aa;
+    transition: color 0.2s;
+  }
+  .contact-links a:hover i {color: #350319;}
+  .cta{
+    display:inline-block;
+    margin-top:1rem;
+    padding:.8rem 1.5rem;
+    border-radius:30px;
+    text-decoration:none;
+  }
+  .cta-dark {background:#111;color:#fff;}
+  .cta-dark:hover {background:#333;}
+  .cta-light {background:#f0f0f0;color:#111;}
+  .cta-light:hover {background:#e0e0e0;}
+
+  /* ======== FOOTER ======== */
+  footer{text-align:center;background:#be185d;color:#eee;padding:1.5rem;margin-top:2rem;}
+  </style>
+  </head>
+  <body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+  function App() {
+    const projetos = [
+      {titulo:'Branding e UI', img:'IMAGENS/nuuva.png'},
+      {titulo:'Designer gráfico e identidade visual', img:'IMAGENS/afrobeat.png'},
+
+    ];
+
+    return (
+      <>
+        <header>
+          <nav className="modern-navbar">
+            <a href="#home" className="nav-brand">Lab do Design</a>
+            <div className="nav-menu">
+              <a href="#projetos" className="nav-item">Projetos</a>
+              <a href="#sobre" className="nav-item">Sobre</a>
+              <a href="#contato" className="nav-item">Contato</a>
+            </div>
+          </nav>
+        </header>
+
+        <section id="home" style={{textAlign:'center',padding:'5rem 1rem'}}>
+          <h2 className="gradient-text" style={{fontSize:'2.5rem',marginBottom:'1rem'}}>
+            Designer Gráfico e UI/UX
+          </h2>
+          <p style={{fontSize:'1.2rem',maxWidth:'600px',margin:'0 auto'}}>
+            Focada em experiências que unem estética e funcionalidade.
+          </p>
+          <div style={{display:'flex',justifyContent:'center',gap:'1rem',marginTop:'2rem'}}>
+            <a href="#projetos" className="cta cta-dark">Ver meus trabalhos</a>
+            <a href="#contato" className="cta cta-light">Conversar com a Ma</a>
+          </div>
+        </section>
+
+
+
+        <section id="projetos">
+          <h2 className="section-title" style={{background:'linear-gradient(135deg, #ec4899 0%, #000 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>Projetos</h2>
+      <div style={{display:'flex',justifyContent:'center',gap:'1rem',marginTop:'2rem'}}>
+          </div>
+          <div className="projetos-grid">
+            {projetos.map((p,i)=>(
+              <div className="card" key={i}>
+                <img src={p.img} alt={p.titulo}/>
+                <div className="card-content">
+                  <h3>{p.titulo}</h3>
+                  <p>{p.descricao}</p>
+                </div>
+              </div>
+              
+            ))}
+          </div>
+                          <a href="#projects" className="cta cta-light">Ver tudo</a>
+        </section>
+
+
+    <section id="sobre" style={{display:'flex',alignItems:'center',gap:'2rem',flexWrap:'wrap',justifyContent:'center',
+    borderRadius: '24px',
+    margin: '2rem auto',
+    padding: '4rem 2rem',
+    position: 'relative',
+    overflow: 'hidden'}}>
+          <div style={{flex:'0 0 180px',textAlign:'center'}}>
+            <img src="IMAGENS/PERFIL.jpg" alt="Foto de perfil" style={{
+              width: '180px',
+              height: '180px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.12)'
+            }}/>
+          </div>
+          <div style={{flex:'1 1 320px',minWidth:'260px'}}>
+            <h2 className="section-title" style={{textAlign:'left',background: 'linear-gradient(135deg, #ec4899 0%, #000 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>Sobre Mim</h2>
+            <p style={{textAlign:'left', color:'#333', fontSize:'1.5rem'}}>Olá! Me chamo Marcella</p> <p> Sou estudante de Análise e Desenvolvimento de Sistemas, apaixonada por Design Gráfico e UI/UX. Meu objetivo é criar experiências digitais que unem beleza, acessibilidade e funcionalidade.</p>
+            <p>Tenho experiência com projetos de branding, interfaces para aplicativos, ilustrações e animações. Busco sempre aprender novas ferramentas e tendências para entregar resultados inovadores.</p>
+            <div className="skills" style={{marginTop:'1rem'}}>
+              <span>Figma</span><span>Photoshop</span><span>Illustrator</span>
+              <span>After Effects</span><span>React (básico)</span><span>UI/UX</span>
+              <span>Branding</span><span>Motion Design</span>
+            </div>
+            <p style={{marginTop:'1rem',fontStyle:'italic',color:'#be185d'}}>
+              "Transformo ideias em experiências visuais que conectam pessoas e tecnologia."
+            </p>
+            <div className="cta-container">
+              <a href="curriculo.pdf" download className="cta cta-light">Baixar Currículo</a>
+              <a href="https://drive.google.com/file/d/1Pmj7vu8DG5CUcPQCj8QpugbOiH8J414T/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="cta cta-dark">Visualizar Currículo</a>
+            </div>
+          </div>
+        </section>
+
+        <section id="contato">
+          <h2 className="section-title" style={{background:'linear-gradient(135deg, #ec4899 0%, #000 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>Contato</h2>
+          <p style={{textAlign:'center',maxWidth:'600px',margin:'0 auto 2rem'}}>
+            Estou sempre aberta para novos projetos, colaborações e freelas.
+          </p>
+
+          <div className="contact-links" style={{display:'flex',flexWrap:'wrap',justifyContent:'center',gap:'1.2rem'}}>
+            <a href="mailto:marcellaroddsilva@outlook.com"><i className="fas fa-envelope"></i> E-mail</a>
+            <a href="https://wa.me/5511949596410" target="_blank"><i className="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.linkedin.com/inmarcellarodriguess" target="_blank"><i className="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://www.behance.net/marcellrodrigu10" target="_blank"><i className="fab fa-behance"></i> Behance</a>
+            <a href="https://github.com/silva2ma" target="_blank"><i className="fab fa-github"></i> GitHub</a>
+          </div>
+
+          <div style={{textAlign:'center',marginTop:'2rem'}}>
+            <a className="cta cta-dark" href="mailto:marcellaroddsilva@outlook.com?subject=Contato%20via%20Portfólio">
+              Enviar E-mail Direto
+            </a>
+          </div>
+        </section>
+
+        <footer>© {new Date().getFullYear()} | Portfólio de Design</footer>
+      </>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<App/>);
+  </script>
+  </body>
+  </html>
