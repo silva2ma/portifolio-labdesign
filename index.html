@@ -90,25 +90,42 @@
     gap:2rem;
     align-items:stretch;
   }
+.card-image{
+  position:relative;
+  width:100%;
+  height:220px;
+  overflow:hidden;
+}
 
-  .card{
-    background:#fff;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 4px 10px rgba(0,0,0,.1);
-    transition:.2s;
-  }
-  .card:hover{transform:translateY(-6px);}
-  .card img{
-    width: 100%;
-    height: clamp(160px, 22vw, 280px);
-    object-fit: contain;
-    background-color: #f9f9f9; /* opcional: cor do fundo */
-    padding: 10px; /* opcional: dá respiro à imagem */
-    transition:transform 0.4s ease;
-  }
-  .card:hover img{transform:scale(1.03);}
-  .card-content{padding:1rem;}
+.card-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.card-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(255, 147, 206, 0.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transition:opacity .3s ease;
+}
+
+.card-image:hover .card-overlay{
+  opacity:1;
+}
+
+.ver-case{
+  background:#fff;
+  color:#111;
+  padding:.6rem 1.2rem;
+  border-radius:20px;
+  text-decoration:none;
+  font-weight:500;
+}
 
   /* ======== SOBRE ======== */
   .skills span{
@@ -151,11 +168,19 @@
 
   <script type="text/babel">
   function App() {
+
+    
     const projetos = [
-      {titulo:'Branding e UI', img:'IMAGENS/nuuva.png'},
-      {titulo:'Designer gráfico e identidade visual', img:'IMAGENS/afrobeat.png'},
+      {titulo:'Spotify — Análise de Produto e Estratégia de Experiência', img:'IMAGENS/nuuva.png',
+        descricao:'Análise detalhada do Spotify, explorando sua jornada de usuário, estratégias de engajamento e design de interface. '
+      },
+      {titulo:'App Caixa — Auditoria de UX com Heurísticas de Nielsen', img:'IMAGENS/afrobeat.png',
+        descricao:'Auditoria de experiência do usuário (UX) do App Caixa, utilizando as heurísticas de Nielsen para identificar pontos fortes e fracos no design e na usabilidade.'
+      },
 
     ];
+   
+
 
     return (
       <>
@@ -172,19 +197,19 @@
 
         <section id="home" style={{textAlign:'center',padding:'5rem 1rem'}}>
           <h2 className="gradient-text" style={{fontSize:'2.5rem',marginBottom:'1rem'}}>
-            Designer Gráfico e UI/UX
+            Estudante de ADS com foco em UX e Produto Digital
           </h2>
           <p style={{fontSize:'1.2rem',maxWidth:'600px',margin:'0 auto'}}>
-            Focada em experiências que unem estética e funcionalidade.
+            Focada em experiências que unem estética, usabilidade e visão de produto.
           </p>
+          
           <div style={{display:'flex',justifyContent:'center',gap:'1rem',marginTop:'2rem'}}>
             <a href="#projetos" className="cta cta-dark">Ver meus trabalhos</a>
             <a href="#contato" className="cta cta-light">Conversar com a Ma</a>
           </div>
         </section>
 
-
-
+<br /><br /><br /><br />
         <section id="projetos">
           <h2 className="section-title" style={{background:'linear-gradient(135deg, #ec4899 0%, #000 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>Projetos</h2>
       <div style={{display:'flex',justifyContent:'center',gap:'1rem',marginTop:'2rem'}}>
@@ -192,16 +217,30 @@
           <div className="projetos-grid">
             {projetos.map((p,i)=>(
               <div className="card" key={i}>
-                <img src={p.img} alt={p.titulo}/>
-                <div className="card-content">
-                  <h3>{p.titulo}</h3>
-                  <p>{p.descricao}</p>
-                </div>
-              </div>
+
+  <div className="card-image">
+    <img src={p.img} alt={p.titulo}/>
+
+    <div className="card-overlay">
+      <a href="#" className="ver-case">Ver case</a>
+    </div>
+  </div>
+
+  <div className="card-content">
+    <h3>{p.titulo}</h3>
+    <p>{p.descricao}</p>
+  </div>
+
+</div>
               
             ))}
           </div>
-                          <a href="#projects" className="cta cta-light">Ver tudo</a>
+                         <div style={{textAlign:'center', marginTop:'2rem'}}>
+  <a href="#projects" className="cta cta-light">
+    Ver todos os projetos
+  </a>
+</div>
+ 
         </section>
 
 
@@ -222,18 +261,35 @@
           </div>
           <div style={{flex:'1 1 320px',minWidth:'260px'}}>
             <h2 className="section-title" style={{textAlign:'left',background: 'linear-gradient(135deg, #ec4899 0%, #000 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>Sobre Mim</h2>
-            <p style={{textAlign:'left', color:'#333', fontSize:'1.5rem'}}>Olá! Me chamo Marcella</p> <p> Sou estudante de Análise e Desenvolvimento de Sistemas, apaixonada por Design Gráfico e UI/UX. Meu objetivo é criar experiências digitais que unem beleza, acessibilidade e funcionalidade.</p>
-            <p>Tenho experiência com projetos de branding, interfaces para aplicativos, ilustrações e animações. Busco sempre aprender novas ferramentas e tendências para entregar resultados inovadores.</p>
+            <p style={{textAlign:'left', color:'#333', fontSize:'1.5rem'}}>
+  Olá! Me chamo Marcella,
+</p>
+
+<p>
+  Tenho <strong>19 anos</strong> e sou estudante de <strong>Análise e Desenvolvimento de Sistemas</strong> com o interesse na área de Produto Digital, 
+  com foco em UX/UI e estratégia de negócios.
+
+  Meu objetivo é <strong>desenvolver soluções que unam experiência do usuário, design e visão de produto.</strong><br /><br />
+
+  Tenho <strong>experiência com rotinas administrativas na área comercial e de faturamento, </strong>
+  o que me proporcionou organização, atenção a processos e compreensão das necessidades do negócio.<br /><br />
+
+  Essa vivência contribui para que eu pense <strong>produtos digitais</strong> não apenas pelo design, 
+  mas também pelo valor que geram para usuários e empresas.<br /><br />
+
+  Atualmente venho desenvolvendo projetos de interfaces e conceitos de produtos digitais, 
+  buscando evoluir minhas habilidades em UX/UI, prototipação e desenvolvimento.
+</p>
             <div className="skills" style={{marginTop:'1rem'}}>
               <span>Figma</span><span>Photoshop</span><span>Illustrator</span>
               <span>After Effects</span><span>React (básico)</span><span>UI/UX</span>
-              <span>Branding</span><span>Motion Design</span>
+              <span>Branding</span>
             </div>
             <p style={{marginTop:'1rem',fontStyle:'italic',color:'#be185d'}}>
               "Transformo ideias em experiências visuais que conectam pessoas e tecnologia."
             </p>
             <div className="cta-container">
-              <a href="curriculo.pdf" download className="cta cta-light">Baixar Currículo</a>
+              <a href="/portfolio-marcella.pdf" download className="cta cta-light"> Explorar Portfólio</a>
               <a href="https://drive.google.com/file/d/1Pmj7vu8DG5CUcPQCj8QpugbOiH8J414T/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="cta cta-dark">Visualizar Currículo</a>
             </div>
           </div>
